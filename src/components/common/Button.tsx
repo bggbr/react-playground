@@ -1,0 +1,14 @@
+import { MouseEvent } from "react";
+
+type Props = {
+    name: string;
+    onClick: (event: MouseEvent<HTMLButtonElement>) => void;
+};
+
+export default function Button({ name, onClick }: Props) {
+    return (
+        <button className='p-4 bg-emerald-400 rounded-full text-center' onClick={onClick}>
+            {name}
+        </button>
+    );
+}
