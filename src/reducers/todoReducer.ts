@@ -1,30 +1,56 @@
-import { Action } from 'redux';
+import { v4 as uuidv4 } from "uuid";
 
-interface CounterState {
-    count: number;
+interface Task {
+    id: string;
+    text: string;
+    onCompleted: boolean;
 }
 
-const initialState: CounterState = {
-    count: 0,
-};
+const initialState: Task[] = [];
 
-type CounterAction = { type: 'INCREMENT' } | { type: 'DECREMENT' };
+export type TodoAction =
+    | { type: "ADD"; payload: { id: string; text: string; onCompleted: boolean } }
+    | { type: "EDIT"; payload: { id: string; text: string; onCompleted: boolean } }
+    | { type: "DELETE"; payload: { id: string; text: string; onCompleted: boolean } };
 
-const counterReducer = (state = initialState, action: Action | CounterAction): CounterState => {
-    switch (action.type) {
-        case 'INCREMENT':
-            return {
-                ...state,
-                count: state.count + 1,
+function createNewTodo(task: Task, payload: any): Task {
+    return { ...task, ...payload };
+}
+
+const todoReducer = (state = initialState, action: TodoAction): Task[] => {
+    const { type, payload } = action;
+
+    switch (type) {
+        case "ADD": {
+            const task = {
+                id: uuidv4(),
+                text: payload.text,
+                onCompleted: false,
             };
-        case 'DECREMENT':
-            return {
-                ...state,
-                count: state.count - 1,
-            };
+            const newTasks = [...state, task];
+            return newTasks;
+        }
+        case "EDIT": {
+            const todoIndex = state.findIndex((todo) => todo.id === payload.id);
+            if (todoIndex >= 0) {
+                const newTodo = createNewTodo(state[todoIndex], payload);
+                const newTasks = [...state];
+                newTasks[todoIndex] = newTodo;
+                return newTasks;
+            } else {
+                return state;
+            }
+        }
+        case "DELETE": {
+            const { id } = payload;
+            const filteredTasks = state.filter((todo) => todo.id !== id);
+            return filteredTasks;
+        }
         default:
             return state;
     }
 };
 
-export default counterReducer;
+export const addTask = () => {};
+
+export default todoReducer;
