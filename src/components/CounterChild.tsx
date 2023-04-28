@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { increment } from "../reducers/counterReducer";
+import Button from "./common/Button";
 export default function Child() {
     const dispatch = useDispatch();
 
@@ -7,5 +8,5 @@ export default function Child() {
         dispatch(increment());
     };
 
-    return <button onClick={incrementNumber}>Child</button>;
+    return <Button name='Child Button' onClick={incrementNumber} />;
 }
