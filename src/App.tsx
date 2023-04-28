@@ -1,24 +1,19 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./store/reducers";
-import { increment, decrement } from "./reducers/counterReducer";
-import Child from "./components/Child";
-function App() {
-    const dispatch = useDispatch();
-    const count = useSelector((state: RootState) => state.counter.count);
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Counter from "./pages/Counter";
+import Todo from "./pages/Todo";
+import Header from "./components/common/Header";
 
+function App() {
     return (
-        <div className='flex flex-col items-center'>
-            <h1>Counter: {count}</h1>
-            <div className='grid grid-cols-2 grid-rows-1 gap-x-4 text-white font-bold mt-4'>
-                <button className='p-4 bg-emerald-400 rounded-full' onClick={() => dispatch(increment())}>
-                    Increment
-                </button>
-                <button className='p-4 bg-emerald-400 rounded-full' onClick={() => dispatch(decrement())}>
-                    Decrement
-                </button>
-            </div>
-            <Child />
-        </div>
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/counter' element={<Counter />} />
+                <Route path='/todo' element={<Todo />} />
+            </Routes>
+        </BrowserRouter>
     );
 }
 
