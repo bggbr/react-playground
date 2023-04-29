@@ -48,7 +48,7 @@ export default function Todo({ id, text, onCompleted }: Props) {
                         type='checkbox'
                         checked={onCompleted}
                         onChange={handleChecked}
-                        className='appearance-none border-solid border-2 border-black w-4 h-4 rounded-full checked:bg-emerald-500'
+                        className='appearance-none border-solid border-2 border-black w-4 h-4 rounded-full checked:bg-emerald-500 cursor-pointer'
                     />
                     {isChanged ? (
                         <input
