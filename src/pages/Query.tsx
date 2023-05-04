@@ -1,10 +1,6 @@
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-
-async function fetchUsers() {
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
-    const data = await response.json();
-    return data;
-}
+import { useQuery } from "react-query";
+import { fetchUsers } from "../services/users";
+import CreateUserForm from "../components/Query/CreateQuery";
 
 function Users() {
     const { isLoading, data } = useQuery("users", fetchUsers);
@@ -28,6 +24,7 @@ function Users() {
 export default function Query() {
     return (
         <div>
+            <CreateUserForm />
             <Users />
         </div>
     );
