@@ -33,16 +33,19 @@ function CreateUserForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
+        <form
+            onSubmit={handleSubmit}
+            className="mx-auto my-4 flex flex-col gap-y-2 w-[300px] items-center justify-center border-2 border-black"
+        >
+            <div className="flex">
                 <label htmlFor="name">Name:</label>
                 <input type="text" name="name" onChange={handleChange} />
             </div>
-            <div>
+            <div className="flex">
                 <label htmlFor="email">Email:</label>
                 <input type="email" name="email" onChange={handleChange} />
             </div>
-            <div>
+            <div className="flex">
                 <label htmlFor="phone">Phone:</label>
                 <input type="tel" name="phone" onChange={handleChange} />
             </div>
