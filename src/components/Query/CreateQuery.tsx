@@ -1,4 +1,4 @@
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { createUser } from "../../services/users";
 import { useState } from "react";
 
@@ -13,9 +13,7 @@ function CreateUserForm() {
         onSuccess: (data) => {
             // 사용자 생성 성공 시 실행할 코드
             console.log("onSuccess");
-            alert(
-                `User ${data.name} with email ${data.email} has been created!`
-            );
+            alert(`User ${data.name} with email ${data.email} has been created!`);
         },
         onError: () => {
             // 사용자 생성 실패 시 실행할 코드
