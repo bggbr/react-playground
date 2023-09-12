@@ -6,7 +6,7 @@ export default function Header() {
             <p className="font-bold text-4xl">
                 <Link to="/">LOGO</Link>
             </p>
-            <ul className="grid grid-rows-1 grid-cols-4 gap-x-4 text-center font-bold">
+            <ul className="grid grid-rows-1 grid-cols-5 gap-x-4 text-center font-bold">
                 <li>
                     <Link to="/">Home</Link>
                 </li>
@@ -18,6 +18,9 @@ export default function Header() {
                 </li>
                 <li>
                     <Link to="/query">Query</Link>
+                </li>
+                <li>
+                    <Link to="/user">User</Link>
                 </li>
             </ul>
         </nav>

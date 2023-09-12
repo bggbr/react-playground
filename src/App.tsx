@@ -4,6 +4,7 @@ import Counter from "./pages/Counter";
 import Todo from "./pages/Todo";
 import Header from "./components/common/Header";
 import Query from "./pages/Query";
+import User from "./pages/User";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
@@ -21,6 +22,7 @@ function App() {
                     <Route path="/counter" element={<Counter />} />
                     <Route path="/todo" element={<Todo />} />
                     <Route path="/query" element={<Query />} />
+                    <Route path="/user" element={<User />} />
                 </Routes>
             </BrowserRouter>
         </QueryClientProvider>
